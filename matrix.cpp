@@ -17,6 +17,7 @@ public:
 		friend Matrix operator-(Matrix init_1, Matrix init_2);
 		friend Matrix operator/(Matrix init_1, Matrix init_2);
 		
+    void Transpose();   
 		uint32_t len();
 		uint32_t get_x(){return size_x;}
 		uint32_t get_y(){return size_y;}
@@ -34,6 +35,11 @@ Matrix::Matrix(uint32_t sizex, uint32_t sizey)
 		ptr = arr;
 		size_x = sizex;
 		size_y = sizey;
+}
+
+void Matrix::Transpose()
+{
+
 }
 
 uint32_t Matrix::len()
@@ -58,6 +64,14 @@ this* operator+=(Matrix init_1){
 		{
 				(this->*ptr+1) += init_1[i];
 		}
+
+    return this*;
+}
+
+
+size_t Matrix::operator[](uint32_t entry_x, uint32_t entry_y)
+{
+		return *ptr + (entry_x * size_x + entry_y);
 }
 
 size_t Matrix::operator[](uint32_t entry_x, uint32_t entry_y) const
